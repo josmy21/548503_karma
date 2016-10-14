@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>ToDoLangApp</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content= "width=device-width, initial-scale=1">
+	<script src="node_modules/angular/angular.min.js"></script>
+	<script src="node_modules/angular-translate/dist/angular-translate.min.js"></script>
+	<script src='node_modules/angular-translate-loader-partial/angular-translate-loader-partial.min.js' ></script>
+	<script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+	<!-- <script src="node_modules/angular-mocks/angular-mocks.js"></script> -->
+	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="app.js"></script>
+</head>
+<body>
+	<div class="container-fluid" ng-app="myApp" ng-controller="myCtrl" ng-init="hider=true">
+	<header translate="headline"></header>
+	<select ng-int="chng='en'" ng-model="chng" ng-change="chang(chng)">
+		<option value="en" ng-selected="true">English</option>
+		<option  value="ma">മലയാളം</option>
+		<option value="sp">Español</option>
+	</select>
+	<a href="#"><h5 ng-click="open()" translate="add"></h5></a>
+	<div class="clear"></div>
+	<div class="col-xs-1"></div>
+	<div class="col-xs-10">
+        <table class="col-xs-12">
+        	<tr>
+        		<th>#</th>
+        		<th translate="taski"></th>
+        		<th translate="taskn"></th>
+        		<th translate="mc"></th>
+        		<th translate="rm"></th>
+        	</tr>
+        	<tr ng-repeat="i in obj" ng-class="{select:arr[$index]}" ><td>{{$index+1}}</td><td>{{i.task_ID}}</td><td>{{i.task_name}}<td><input ng-click= "check(chk,$index)" type="checkbox" ng-model="chk"></td><td ng-click="remove($index)"><a href="#" translate="rm"></a></td></tr>
+        </table>
+	</div>
+	<div class="col-xs-1"></div>
+	</div>
+	
+</body>
+</html>
